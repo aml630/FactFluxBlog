@@ -1,0 +1,40 @@
+<head>
+  <script src="https://d3js.org/d3.v5.min.js"></script>
+</head>
+
+<body>
+
+
+  <script>
+    var canvas = d3.select("body")
+      .append("svg")
+      .attr("width", 500)
+      .attr("height", 500)
+      .append("g")
+      .attr("transform", "translate(50, 50)");
+
+      var dataset = [80, 90, 100, 110, 140, 180, 200]
+
+      var widthScale = d3.scaleLinear()
+      .domain([0, 50])
+      .range([0, 500]);
+
+      var colorScale = d3.scaleLinear()
+      .domain([0, 50])
+      .range(["red", "blue"])
+
+    var dataPoints = [20, 30, 40, 50];
+
+    var bars = canvas.selectAll("rect")
+      .data(dataPoints)
+      .enter()
+      .append("rect")
+      .attr("width", function (d) { return widthScale(d) })
+      .attr("height", 40)
+      .attr("fill", function (d) { return colorScale(d)})
+      .attr("y", function (d, i) { return i * 100 });
+
+ 
+
+  </script>
+</body>
